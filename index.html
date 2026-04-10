@@ -2,6 +2,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <head>
+
+<script>
+(function() {
+  const ua = navigator.userAgent || "";
+
+  const isWebView =
+    ua.includes("Instagram") ||
+    ua.includes("Telegram") ||
+    ua.includes("FBAN") ||
+    ua.includes("FBAV") ||
+    /\bwv\b/.test(ua) ||
+    (/iPhone|iPad/.test(ua) && !ua.includes("Safari"));
+
+  if (isWebView) {
+    document.write(`
+      <style>
+        body {
+          margin:0;
+          font-family:sans-serif;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          height:100vh;
+          background:linear-gradient(135deg,#4f6ef7,#7c3aed);
+          color:#fff;
+          text-align:center;
+        }
+        .box {
+          padding:25px;
+          max-width:350px;
+        }
+        a {
+          display:block;
+          margin:10px 0;
+          padding:12px;
+          border-radius:30px;
+          background:#fff;
+          color:#4f6ef7;
+          text-decoration:none;
+          font-weight:700;
+        }
+      </style>
+
+      <div class="box">
+        <h2>⚠️ Open in Browser</h2>
+        <p>This app is not supported inside Telegram / Instagram.</p>
+
+        <a href="intent://${location.href.replace(/^https?:\/\//,'')}#Intent;scheme=https;package=com.android.chrome;end">
+          Open in Chrome 🚀
+        </a>
+
+        <a href="${location.href}" download>
+          Backup File 📥
+        </a>
+      </div>
+    `);
+  }
+})();
+</script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>⚡ Thunderstudy | CBT </title>
